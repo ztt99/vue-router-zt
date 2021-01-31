@@ -6,10 +6,23 @@ function ensureSlash(){
         window.location.hash = '/'
     }
 }
-
+function getHash(){
+    return window.location.hash.slice(1)
+}
 export default class HashHistory extends History {
     constructor(router){
         super(router)
         ensureSlash()
+    }
+    getCurrentLocation(){
+        return getHash()
+    }
+    setUpListener(){
+        window.addEventListener('hashchange',()=>{
+            // 拿到hash值进行跳转
+            let hash = getHash()
+            console.log(hash);
+            this.transitionTo(hash)
+        })
     }
 }

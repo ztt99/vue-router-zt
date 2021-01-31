@@ -20,6 +20,7 @@ function install(Vue){
             if(this.$options.router){
                 this._routerRoot = this
                 this._router = this.$options.router
+                this._router.init(this) //路由实例上init，并把根组件传递过去
             }else{
                 this._routerRoot = this.$parent && this.$parent._routerRoot
             }

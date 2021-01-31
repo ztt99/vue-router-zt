@@ -20,6 +20,19 @@ export default class VueRouter {
                 break;
         }
     }
+    init(App){
+        // 监听hash或history变化，默认跳转对应的路径
+        console.log(App);
+        const history = this.history
+        function setUpHashListener(){
+            history.setUpListener()
+        }
+        // 初始化时，获取当前hash值进行跳转
+        history.transitionTo(
+            history.getCurrentLocation(), //获取当前的hash
+            setUpHashListener //监听hash
+        )
+    }
 }
 
 
