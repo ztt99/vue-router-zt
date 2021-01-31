@@ -9,11 +9,18 @@ export default new Router({
     routes:[
         {
             path:'/',
-            component:()=>import('./view/home.vue')
+            component:()=>import('./view/home.vue'),
+            
         },
         {
             path:'/about',
-            component:()=>import('./view/about.vue')
+            component:()=>import('./view/about.vue'),
+            children:[
+                {
+                    path:'a',
+                    component:h=>h('div',{},'A')
+                }
+            ]
         }
     ]
 })
