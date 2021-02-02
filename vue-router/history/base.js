@@ -1,6 +1,5 @@
 function  runQueque(queue,iterator,cb) {
-
-
+    //既然调用的时候是使用next才会走下一步，那么一定是在next中控制下一个的index
     function step(index) {
         if(index === queue.length) return cb()
         iterator( queue[index],()=>step(index++)) //如果不调用next就会卡在这里，不会index++
