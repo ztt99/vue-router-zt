@@ -21,7 +21,6 @@ export default class HashHistory extends History {
         window.addEventListener('hashchange',()=>{
             // 拿到hash值进行跳转
             let hash = getHash()
-            console.log(hash);
             this.transitionTo(hash)
         })
     }

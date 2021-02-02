@@ -21,6 +21,9 @@ function install(Vue){
                 this._routerRoot = this
                 this._router = this.$options.router
                 this._router.init(this) //路由实例上init，并把根组件传递过去
+                // 将路由变成响应式  Vue.util.defineReactive这个方法是Vue的私有属性
+                Vue.util.defineReactive(this,'_route',this._router.history.current)
+                console.log(this._route);
             }else{
                 this._routerRoot = this.$parent && this.$parent._routerRoot
             }

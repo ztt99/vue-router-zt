@@ -35,6 +35,13 @@ export default class VueRouter {
             history.getCurrentLocation(), //获取当前的hash
             setUpHashListener //监听hash
         )
+
+        history.listen((route)=>{
+            App._route = route
+            console.log( App._route);
+        })
+
+        // 这里获取实例，可以通过这个实例进行更新route
     }
 }
 
