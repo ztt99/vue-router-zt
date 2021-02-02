@@ -19,7 +19,7 @@ export default class HashHistory extends History {
     }
     setUpListener(){
         window.addEventListener('hashchange',()=>{
-            // 拿到hash值进行跳转
+            // 拿到hash值进行跳转,hashchange主要是监听url地址的前进回退
             let hash = getHash()
             this.transitionTo(hash)
         })

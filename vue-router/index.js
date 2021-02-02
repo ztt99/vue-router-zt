@@ -23,6 +23,10 @@ export default class VueRouter {
     match(location){
       return  this.matcher.match(location)
     }
+    push(location){
+        this.history.transitionTo(location)
+    }
+
     init(App){
         // 监听hash或history变化，默认跳转对应的路径
         console.log(App);

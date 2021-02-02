@@ -14,7 +14,7 @@ created(){
 },
 methods:{
   to(){
-    this.$router.push('/')
+    this.$router.push('/about/a')
   }
 }
 }

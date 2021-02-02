@@ -1,12 +1,11 @@
+import Link from './components/router-link'
+import View from './components/router-view'
+
 function install(Vue){
     // 1. 会在全局中注册组件router-link router-view
 
-    Vue.component('router-link',{
-        render:h=>h('a',{},'')
-    })
-    Vue.component('router-view',{
-        render:h=>h('div',{},'')
-    })
+    Vue.component('router-link',Link)
+    Vue.component('router-view',View)
 
     // 2. 挂载属性$route $router
 
@@ -22,7 +21,7 @@ function install(Vue){
      })
      Object.defineProperty( Vue.prototype,'$router',{
         get(){
-            return this._routerRoot.router
+            return this._routerRoot._router
         }
     })
 

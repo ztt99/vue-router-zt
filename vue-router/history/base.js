@@ -21,7 +21,6 @@ export class History {
             // 3.1 首次渲染的时候
             // 3.2 重复点击相同路由的时候
 
-
         if(this.current.path === this.route.path && this.current.matched.length === this.route.matched.length){
             return 
         }
@@ -37,6 +36,8 @@ export class History {
     }
     updateRoute(){
         // 这个时候监听的
+        console.log(this.route)
+        window.location.hash = this.route.path
         this.current = this.route
         this.cb && this.cb(this.route)
     }
