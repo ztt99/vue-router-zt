@@ -10,7 +10,7 @@
 <script>
 export default {
 created(){
-  console.log(this._routerRoot._router);
+  console.log(this.$route);
 },
 methods:{
   to(){

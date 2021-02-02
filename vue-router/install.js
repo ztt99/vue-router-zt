@@ -10,8 +10,21 @@ function install(Vue){
 
     // 2. 挂载属性$route $router
 
-    Vue.prototype.$route = {}
-    Vue.prototype.$router = {}
+    /**
+     * $route 就是current对象
+     * $router 就是Router的实例
+     */
+
+     Object.defineProperty( Vue.prototype,'$route',{
+         get(){
+             return this._routerRoot._route
+         }
+     })
+     Object.defineProperty( Vue.prototype,'$router',{
+        get(){
+            return this._routerRoot.router
+        }
+    })
 
     // 3. 给所有组件混入一个属性router，表示当前路由配置
 
