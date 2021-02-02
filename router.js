@@ -18,7 +18,7 @@ export default new Router({
             children:[
                 {
                     path:'a',
-                    component:h=>h('div',{},'A')
+                    component:()=>import('./view/a.vue'),
                 }
             ]
         }

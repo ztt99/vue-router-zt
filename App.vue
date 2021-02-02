@@ -3,7 +3,7 @@
       <router-link to="/">home</router-link>
       <router-link to="/about">about</router-link>
       <button @click="to">to</button>
-      <router-view></router-view>
+      <router-view ></router-view>
   </div>
 </template>
 

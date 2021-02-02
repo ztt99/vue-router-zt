@@ -24,7 +24,9 @@ export default class VueRouter {
       return  this.matcher.match(location)
     }
     push(location){
-        this.history.transitionTo(location)
+        this.history.transitionTo(location,()=>{
+            window.location.hash = location
+        })
     }
 
     init(App){

@@ -36,8 +36,6 @@ export class History {
     }
     updateRoute(){
         // 这个时候监听的
-        console.log(this.route)
-        window.location.hash = this.route.path
         this.current = this.route
         this.cb && this.cb(this.route)
     }
