@@ -11,6 +11,7 @@ export default class VueRouter {
         // 2. 处理路由跳转以及监听
         options.mode = options.mode || 'hash'
 
+        this.beforeQueue = []
         switch (options.mode) {
             case 'hash':
             this.history = new HashHistory(this)
@@ -27,6 +28,9 @@ export default class VueRouter {
         this.history.transitionTo(location,()=>{
             window.location.hash = location
         })
+    }
+    beforeEach(cb){
+        this.beforeQueue.push(cb)  //在路由跳转前触发
     }
 
     init(App){

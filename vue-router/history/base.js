@@ -1,3 +1,13 @@
+function  runQueque(queue,iterator,cb) {
+
+
+    function step(index) {
+        if(index === queue.length) return cb()
+        iterator( queue[index],()=>step(index++)) //如果不调用next就会卡在这里，不会index++
+    }
+    step(0)
+}
+
 export class History {
     constructor(router) {
         this.router = router
@@ -24,15 +34,25 @@ export class History {
         if(this.current.path === this.route.path && this.current.matched.length === this.route.matched.length){
             return 
         }
-        
+        let queue = [].concat(this.router.beforeQueue)
+
+        const iterator = (hook,next)=>{
+            hook(this.current,this.router,()=>{
+                next()
+            })
+        }
+        runQueque(queue,iterator,()=>{
+
         /**
          * 4. 路径变化视图刷新
          * 4.1 更新this.current
          * 4.2 需要将当前路由信息注册在实例上，成为响应式
          */
 
-         this.updateRoute()
+        this.updateRoute()
         // 跳转 标记form to
+        })
+
     }
     updateRoute(){
         // 这个时候监听的
